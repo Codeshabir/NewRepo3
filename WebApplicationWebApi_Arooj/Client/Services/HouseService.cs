@@ -74,7 +74,7 @@ namespace Client.Services
             }
         }
 
-      
+
 
         public async Task<HouseDTO> CreateHouseAsync(HouseDTO house)
         {
@@ -91,7 +91,7 @@ namespace Client.Services
                     }
                 }
 
-              
+
 
                 // Send the request
                 response = await _httpClient.PostAsJsonAsync("/api/Houses", house);
@@ -137,8 +137,18 @@ namespace Client.Services
         }
 
 
+        public async Task<StripeModel> CreateStripePayment(string amount)
+        {
+
+            var response = await _httpClient.GetAsync($"api/Checkout/PayWithStripe/{amount}");
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<StripeModel>(content);
+
+        }
+
+
+
     }
-
-
-
-}
+    }

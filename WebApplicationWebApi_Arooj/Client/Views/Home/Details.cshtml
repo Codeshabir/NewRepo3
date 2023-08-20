@@ -44,7 +44,7 @@
             <div class="container py-1">
                 <div class="row align-items-center">
                     <div class="col-8 col-md-8 col-lg-4">
-                        <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Apart<span class="text-primary">.</span></strong></a></h1>
+                        <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>*AnyWhere<span class="text-primary">.</span></strong></a></h1>
                     </div>
                     <div class="col-4 col-md-4 col-lg-8">
                         <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -110,7 +110,11 @@
                     <span>Rent: £@Model.Rent</span>
                     </div>
 
-                <p><a href="@Url.Action("CreatePayment","Home")" class="btn btn-primary px-4 py-3">Buy Now</a></p>
+                @using (Html.BeginForm("CreateCheckoutSession", "Home", FormMethod.Post))
+                {
+                    @Html.HiddenFor(model => model.Rent) <!-- This will generate a hidden field with the value of model.rent -->
+                    <button class="btn btn-success" type="submit">Check out</button>
+                }
             </div>
         </div>
         
@@ -125,7 +129,9 @@
             <div class="row">
                 <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
                     <h2 class="mb-5">Love By Our Customers</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, fugit nam obcaecati fuga itaque deserunt officia, error reiciendis ab quod?</p>
+                    <p>
+                        At AnyWhere, we take pride in delivering exceptional service to our customers. Our commitment to quality and customer satisfaction is reflected in the positive feedback we receive. Here's what some of our valued customers have to say about their experience with us:
+                    </p>
                 </div>
             </div>
             <div class="nonloop-block-13 owl-carousel">
@@ -136,7 +142,10 @@
                     </div>
                     <div class="text-black">
                         <h3 class="font-weight-light h5">Megan Smith</h3>
-                        <p class="font-italic">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, iusto. Aliquam illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
+                        <p class="font-italic">
+                            &ldquo;I couldn't be happier with the service I received from AnyWhere. The team went above and beyond to meet my needs.
+                            &rdquo;
+                        </p>
                     </div>
                 </div>
 
@@ -146,7 +155,10 @@
                     </div>
                     <div class="text-black">
                         <h3 class="font-weight-light h5">Brooke Cagle</h3>
-                        <p class="font-italic">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, iusto. Aliquam illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
+                        <p class="font-italic">
+                            &ldquo;The level of professionalism and attention to detail is unmatched. I highly recommend their services.
+                            &rdquo;
+                        </p>
                     </div>
                 </div>
 
@@ -156,7 +168,10 @@
                     </div>
                     <div class="text-black">
                         <h3 class="font-weight-light h5">Philip Martin</h3>
-                        <p class="font-italic">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, iusto. Aliquam illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
+                        <p class="font-italic">
+                            &ldquo; Provided a seamless experience from start to finish. Their expertise made all the difference.
+                            &rdquo;
+                        </p>
                     </div>
                 </div>
 
@@ -166,30 +181,14 @@
                     </div>
                     <div class="text-black">
                         <h3 class="font-weight-light h5">Steven Ericson</h3>
-                        <p class="font-italic">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, iusto. Aliquam illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
+                        <p class="font-italic">
+                            &ldquo;I've been a loyal customer of AnyWhere Pvt Ltd for years. Their consistency and dedication keep me coming back.
+                            &rdquo;
+                        </p>
                     </div>
                 </div>
 
-                <div class="text-center p-3 p-md-5 bg-white">
-                    <div class="mb-4">
-                        <img src="/images/person_2.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
-                    </div>
-                    <div class="text-black">
-                        <h3 class="font-weight-light h5">Nathan Dumlao</h3>
-                        <p class="font-italic">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, iusto. Aliquam illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
-                    </div>
-                </div>
-
-                <div class="text-center p-3 p-md-5 bg-white">
-                    <div class="mb-4">
-                        <img src="/images/person_4.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
-                    </div>
-                    <div class="text-black">
-                        <h3 class="font-weight-light h5">Brook Smith</h3>
-                        <p class="font-italic">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, iusto. Aliquam illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
-                    </div>
-                </div>
-
+             
             </div>
         </div>
     </div>
@@ -215,8 +214,11 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="mb-5">
-                        <h3 class="footer-heading mb-4">About Apart</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
+                        <h3 class="footer-heading mb-4">About</h3>
+
+                        <p>
+                            Our team is dedicated to delivering outstanding customer service and ensuring that your apartment search experience is seamless and enjoyable. Whether you're a young professional, a family, or anyone in between, we're here to assist you in finding your ideal living space.
+                        </p>
                     </div>
                     <div class="mb-5">
                         <h3 class="footer-heading mb-4">Subscribe</h3>
@@ -289,11 +291,7 @@
             </div>
             <div class="row pt-5 mt-5 text-center">
                 <div class="col-md-12">
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
+                  
                 </div>
 
             </div>

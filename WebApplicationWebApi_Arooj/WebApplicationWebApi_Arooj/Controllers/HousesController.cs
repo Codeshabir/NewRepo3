@@ -44,8 +44,6 @@ namespace WebApplicationWebApi_Arooj.Controllers
             return house;
         }
 
-      
-
 
         private IFormFile CreateIFormFileFromBase64(string base64String, string fileName)
         {
