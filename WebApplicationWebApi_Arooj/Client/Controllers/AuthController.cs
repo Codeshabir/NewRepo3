@@ -107,19 +107,14 @@ namespace Client.Controllers
                 }
                 if (isSuccess)
                 {
-                    if (loginDTO.Email != "admin@gmail.com")
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        return RedirectToAction("GetUsers");
-                    }
+                    return RedirectToAction("GetUsers");
+
                 }
 
             }
             return View("Login");
         }
+
 
         public async Task<IActionResult> GetUsers()
         {
